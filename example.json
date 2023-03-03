@@ -1,0 +1,20 @@
+{
+    "education": [
+        {
+            "start_date": "12-Jan-2022",
+            "end_date": "31-Mar-2022",
+            "institution": "Hem Sheela Model School",
+            "place": "Durgapur",
+            "course": "PCMB",
+            "degree": "AISSCE"
+        },
+        {
+            "start_date": "31-Jan-2022",
+            "end_date": "31-Apr-2022",
+            "institution": "FIITJEE",
+            "place": "Durgapur",
+            "course": "PCMB",
+            "degree": "JEE"
+        }
+    ]
+}
