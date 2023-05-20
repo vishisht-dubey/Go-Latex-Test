@@ -19,9 +19,9 @@ type Education struct {
 
 var tpl = template.Must(template.ParseFiles("section/tex/education.tex"))
 
-func PrepareEducationSection(e Education) (string, error) {
+func PrepareEducationSection(education []Education) (string, error) {
 	var buf bytes.Buffer
-	err := tpl.Execute(&buf, e)
+	err := tpl.Execute(&buf, education)
 	if err != nil {
 		// Handle the error if any and return
 		fmt.Println(err.Error())

@@ -1,7 +1,7 @@
 package section
 
 type Resume struct {
-	Contact                   []Contact            `json:"contact"`
+	Contact                   Contact              `json:"contact"`
 	Skills                    []Skills             `json:"skills"`
 	Education                 []Education          `json:"education"`
 	WorkExperience            []WorkExperience     `json:"workExperience"`

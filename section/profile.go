@@ -1,9 +1,9 @@
 package section
 
 type Contact struct {
-	Email        string       `json:"email"`
-	PhoneNumber  string       `json:"phoneNumber"`
-	ProfileLinks ProfileLinks `json:"profileLinks"`
+	Email        string         `json:"email"`
+	PhoneNumber  string         `json:"phoneNumber"`
+	ProfileLinks []ProfileLinks `json:"profileLinks"`
 }
 
 type ProfileLinks struct {

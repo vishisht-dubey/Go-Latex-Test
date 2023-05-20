@@ -1,9 +1,9 @@
 package section
 
 import (
+	"Go-Latex-Test/shellescape"
 	"encoding/json"
 	"os/exec"
-	"regexp"
 	"strings"
 	"time"
 )
@@ -32,7 +32,8 @@ type MarkdownSnippet struct {
 // Implement Marshaler and Unmarshaler interface
 func (d *Date) UnmarshalJSON(b []byte) error {
 	s := strings.Trim(string(b), "\"")
-	t, err := time.Parse("2006-01-02", s)
+	layout := "2006-01-02"
+	t, err := time.Parse(layout, s)
 	if err != nil {
 		println(err)
 		return err
@@ -56,20 +57,20 @@ func (m *StringNotSafeError) Error() string {
 }
 
 func (m *MarkdownSnippet) UnmarshalJSON(b []byte) error {
-	s := string(b)
-
-	if isSafe := regexp.MustCompile(`^[A-Za-z0-9<>()/*_%.,~\-\[\]\\]+$`).MatchString(s); !isSafe {
-		return &StringNotSafeError{}
-	}
-	out, err := exec.Command("pandoc -f markdown -t latex <<< " + s).Output()
+	s := strings.Trim(string(b), "\"")
+	println(shellescape.Quote(s))
+	stdout, err := exec.Command("echo", s, " | pandoc -f markdown -t latex").Output()
 	if err != nil {
-		println(err)
+		println("not successful")
+		println(err.Error())
 		return err
 	}
 
+	println("successful : ", stdout)
+
 	*m = MarkdownSnippet{
 		s,
-		string(out),
+		string(stdout),
 	}
 
 	return nil

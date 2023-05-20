@@ -10,7 +10,7 @@ import (
 
 func main() {
 	router := gin.Default()
-	router.POST("/get-latex", getLatex)
+	router.POST("/json-to-latex", getLatex)
 
 	router.Run("localhost:3000")
 }
@@ -25,6 +25,6 @@ func getLatex(c *gin.Context) {
 	}
 
 	// Add the new album to the slice.
-	educationSection, _ := section.PrepareEducationSection(resume.Education[0])
+	educationSection, _ := section.PrepareEducationSection(resume.Education)
 	c.IndentedJSON(http.StatusCreated, gin.H{"latex": educationSection})
 }
