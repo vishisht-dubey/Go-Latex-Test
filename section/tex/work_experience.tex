@@ -4,9 +4,8 @@
   \resumeSubHeadingListStart
     {{range .}}
 \resumeSubheading
-      {\textbf{ {{.Organisation}} }   {{range .Links}}  ( \href{ {{.LinkURL}} } {\emph{\underline{ {{.LinkText}} } } } )}
-      {{end}}
-      {\textbf{ {{.TimePeriod.StartDate.Year}}-{{if .TimePeriod.IsOngoing}} Current {{else}} {{.TimePeriod.EndDate.Year}} {{end}} } }
+      {\textbf{ {{.Organisation}} } {{range .Links}} (\href{ {{.LinkURL}} }{\emph{\underline{ {{.LinkText}} }}}) {{end}} }
+      {\textbf{ {{.TimePeriod.StartDate.Year}}-{{if .TimePeriod.IsOngoing}} Current {{else}} {{.TimePeriod.EndDate.Year}} {{end}} }}
       {\textbf{ {{.Role}} }}{}
       \resumeItemListStart
       {{range .Details}}
