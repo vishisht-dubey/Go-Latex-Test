@@ -1,10 +1,24 @@
-\section{Education}
-  \resumeSubHeadingListStart
-  {{range .education}}
-    \resumeSubheading
-      {\textbf{ {{.Institution}}, {{.Location}} }}{\textbf{2020 - 2025}}
-      { {{.Degree}} in {{.Course}}}{
-      CGPA - 9.16
-      }
-  \resumeSubHeadingListEnd
-  {{end}}
+{{if .}}
+    \section{Education}
+    \resumeSubHeadingListStart
+
+    {{range .}}
+        \resumeSubheading
+
+        {\textbf{ {{.Institution}}, {{.Location}} }}{\textbf{ {{.TimePeriod.StartDate.Year}} - {{if .TimePeriod.IsOngoing}} Current {{else}} {{.TimePeriod.EndDate.Year}} {{end}}} }
+        { {{.Degree}} in {{.Course}}}{CGPA - {{.MarksOrCGPA}}/{{.MaximumMarks}} }
+
+        {{if .Details}}
+            \resumeItemListStart
+
+            {{range .Details}}
+                \resumeItem{ {{.FormattedToLatex}}}
+            {{end}}
+
+            \resumeItemListEnd
+        {{end}}
+
+        \resumeSubHeadingListEnd
+    {{end}}
+
+{{end}}

@@ -20,13 +20,15 @@ type TimePeriod struct {
 }
 
 type Date struct {
-	raw_time       time.Time
-	formatted_time string
+	rawTime           time.Time
+	FormattedToString string
+	Year              int
+	Month             string
 }
 
 type MarkdownSnippet struct {
-	raw_string             string
-	formatted_latex_string string
+	rawString        string
+	FormattedToLatex string
 }
 
 // Implement Marshaler and Unmarshaler interface
@@ -38,16 +40,21 @@ func (d *Date) UnmarshalJSON(b []byte) error {
 		println(err)
 		return err
 	}
-	str := t.Format("%Y-%M-%D")
+	yearMonthDay := t.Format("%Y-%M-%D")
+	year := t.Year()
+	month := t.Month().String()
+
 	*d = Date{
 		t,
-		str,
+		yearMonthDay,
+		year,
+		month,
 	}
 	return nil
 }
 
 func (d Date) MarshalJSON() ([]byte, error) {
-	return json.Marshal(time.Time(d.raw_time))
+	return json.Marshal(time.Time(d.rawTime))
 }
 
 func (m *MarkdownSnippet) UnmarshalJSON(b []byte) error {
@@ -61,12 +68,12 @@ func (m *MarkdownSnippet) UnmarshalJSON(b []byte) error {
 
 	*m = MarkdownSnippet{
 		s,
-		string(stdout),
+		strings.TrimRight(string(stdout), "\r\n"),
 	}
 
 	return nil
 }
 
 func (m MarkdownSnippet) MarshalJSON() ([]byte, error) {
-	return json.Marshal(m.raw_string)
+	return json.Marshal(m.rawString)
 }

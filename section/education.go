@@ -2,7 +2,6 @@ package section
 
 import (
 	"bytes"
-	"fmt"
 	"text/template"
 )
 
@@ -23,8 +22,7 @@ func PrepareEducationSection(education []Education) (string, error) {
 	var buf bytes.Buffer
 	err := tpl.Execute(&buf, education)
 	if err != nil {
-		// Handle the error if any and return
-		fmt.Println(err.Error())
+		println(err.Error())
 		return "", err
 	}
 	return buf.String(), nil
