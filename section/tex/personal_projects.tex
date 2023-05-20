@@ -1,0 +1,19 @@
+%-----------PROJECTS-----------
+{{if .}}
+    \section{Projects}
+    \vspace{-5pt}
+    \resumeSubHeadingListStart
+    {{range .}}
+        \resumeProjectHeading
+            { \textbf{ {{.ProjectName}} } $|$ {{range .Links}} \href{ {{.LinkURL}} }{(\emph{\underline{ {{.LinkText}} }})}} {{end}} { {{.TimePeriod.StartDate.Year}} - {{if .TimePeriod.IsOngoing}} Current {{else}} {{.TimePeriod.EndDate.Year}} {{end}} }
+            {{if .Details}}
+            \resumeItemListStart
+                {{range .Details}}
+                    \resumeItem{ {{.FormattedToLatex}} }
+                {{end}}
+            \resumeItemListEnd
+            {{end}}
+    {{end}}
+    \resumeSubHeadingListEnd
+    \vspace{-16pt}
+{{end}}
