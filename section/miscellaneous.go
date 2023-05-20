@@ -58,7 +58,7 @@ func (m *StringNotSafeError) Error() string {
 func (m *MarkdownSnippet) UnmarshalJSON(b []byte) error {
 	s := string(b)
 
-	if isSafe := regexp.MustCompile(`^[A-Za-z0-9<>()/*_%.\-\[\]\\]+$`).MatchString(s); !isSafe {
+	if isSafe := regexp.MustCompile(`^[A-Za-z0-9<>()/*_%.,~\-\[\]\\]+$`).MatchString(s); !isSafe {
 		return &StringNotSafeError{}
 	}
 	out, err := exec.Command("pandoc -f markdown -t latex <<< " + s).Output()
