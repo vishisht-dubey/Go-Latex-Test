@@ -2,7 +2,7 @@
 { {{.Degree}} } % Degree
 { {{.Institution }} } % Institution
 { {{.Location}}} % Location
-{ {{.StartDate}} - {{if .EndDate}} {{.EndDate}} {{else}} Current {{end}}} % Date(s)
+{ {{.StartDate.String_time }} - {{if .EndDate}} {{.EndDate}} {{else}} Current {{end}}} % Date(s)
 {
     \begin{cvitems} % Description(s) bullet points
         \item {Current CPI (after 5 semesters) : 9.33}
