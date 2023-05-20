@@ -1,0 +1,19 @@
+%-----------POSITION OF RESPONSIBILITY-----------
+{{if .}}
+\section{Position of Responsibility}
+\vspace{-5pt}
+    \resumeSubHeadingListStart
+    {{range .}}
+        \resumeProjectHeading
+            { \textbf{ {{.Position}} } { {{.TimePeriod.StartDate.Year}} - {{if .TimePeriod.IsOngoing}} Current {{else}} {{.TimePeriod.EndDate.Year}} {{end}} }
+            {{if .Responsibilities}}
+            \resumeItemListStart
+                {{range .Responsibilities}}
+                    \resumeItem{ {{.FormattedToLatex}} }
+                {{end}}
+            \resumeItemListEnd
+            {{end}}
+    {{end}}
+    \resumeSubHeadingListEnd
+    \vspace{-16pt}
+{{end}}

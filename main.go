@@ -25,6 +25,6 @@ func getLatex(c *gin.Context) {
 	}
 
 	// Add the new album to the slice.
-	section, _ := section.PrepareSkillsSection(resume.Skills)
+	section, _ := section.PreparePORsSection(resume.PORs)
 	c.IndentedJSON(http.StatusCreated, gin.H{"latex": section})
 }
