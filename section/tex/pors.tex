@@ -5,7 +5,7 @@
     \resumeSubHeadingListStart
     {{range .}}
         \resumeProjectHeading
-            { \textbf{ {{.Position}} } { {{.TimePeriod.StartDate.Year}} - {{if .TimePeriod.IsOngoing}} Current {{else}} {{.TimePeriod.EndDate.Year}} {{end}} }
+            {\textbf{ {{.Position}} }} { {{.TimePeriod.StartDate.Year}} - {{if .TimePeriod.IsOngoing}} Current {{else}} {{.TimePeriod.EndDate.Year}} {{end}} }
             {{if .Responsibilities}}
             \resumeItemListStart
                 {{range .Responsibilities}}
