@@ -3,6 +3,7 @@ package section
 import (
 	"encoding/json"
 	"os/exec"
+	"regexp"
 	"strings"
 	"time"
 )
@@ -48,8 +49,18 @@ func (d Date) MarshalJSON() ([]byte, error) {
 	return json.Marshal(time.Time(d.raw_time))
 }
 
+type StringNotSafeError struct{}
+
+func (m *StringNotSafeError) Error() string {
+	return "given string is not safe to process"
+}
+
 func (m *MarkdownSnippet) UnmarshalJSON(b []byte) error {
 	s := string(b)
+
+	if isSafe := regexp.MustCompile(`^[A-Za-z0-9<>()/*_%.\-\[\]\\]+$`).MatchString(s); !isSafe {
+		return &StringNotSafeError{}
+	}
 	out, err := exec.Command("pandoc -f markdown -t latex <<< " + s).Output()
 	if err != nil {
 		println(err)
