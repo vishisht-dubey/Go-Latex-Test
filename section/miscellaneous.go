@@ -50,23 +50,14 @@ func (d Date) MarshalJSON() ([]byte, error) {
 	return json.Marshal(time.Time(d.raw_time))
 }
 
-type StringNotSafeError struct{}
-
-func (m *StringNotSafeError) Error() string {
-	return "given string is not safe to process"
-}
-
 func (m *MarkdownSnippet) UnmarshalJSON(b []byte) error {
-	s := strings.Trim(string(b), "\"")
-	println(shellescape.Quote(s))
-	stdout, err := exec.Command("echo", s, " | pandoc -f markdown -t latex").Output()
+	s := shellescape.Quote(strings.Trim(string(b), "\""))
+
+	stdout, err := exec.Command("bash", "-c", "echo "+s+" | pandoc -f markdown -t latex").Output()
 	if err != nil {
-		println("not successful")
 		println(err.Error())
 		return err
 	}
-
-	println("successful : ", stdout)
 
 	*m = MarkdownSnippet{
 		s,
