@@ -2,8 +2,10 @@ package main
 
 import (
 	section "Go-Latex-Test/section"
+	utils "Go-Latex-Test/utils"
 	"fmt"
 	"net/http"
+	"os/exec"
 
 	"github.com/gin-gonic/gin"
 )
@@ -17,14 +19,31 @@ func main() {
 
 func getLatex(c *gin.Context) {
 	var resume section.Resume
-	fmt.Println("something is going on")
 
 	if err := c.BindJSON(&resume); err != nil {
 		fmt.Println(err)
 		return
 	}
 
-	// Add the new album to the slice.
-	section, _ := section.PrepareResearchExperienceSection(resume.ResearchExperience)
-	c.IndentedJSON(http.StatusCreated, gin.H{"latex": section})
+	outputDir := "/tmp/"
+	jobName := utils.CreateFileName()
+	texFile := outputDir + jobName + ".tex"
+	pdfFile := outputDir + jobName + ".pdf"
+
+	reSection, _ := section.PrepareResearchExperienceSection(resume.ResearchExperience)
+	preamble, _ := utils.ReadFileToBuffer("section/tex/preamble.text")
+	closing, _ := utils.ReadFileToBuffer("section/tex/closing.text")
+	utils.AppendBufferToFile(texFile, preamble)
+	utils.AppendBufferToFile(texFile, reSection)
+	utils.AppendBufferToFile(texFile, closing)
+
+	if stdout, err := exec.Command("pdflatex", "-output-directory="+"/tmp/", "-jobname="+jobName, texFile).Output(); err != nil {
+		println(err.Error())
+	} else {
+		println(string(stdout))
+	}
+
+	b64, _ := utils.FileToBase64(pdfFile)
+
+	c.IndentedJSON(http.StatusCreated, gin.H{"data": b64})
 }

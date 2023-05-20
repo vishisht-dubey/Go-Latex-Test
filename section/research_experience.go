@@ -15,14 +15,14 @@ type ResearchExperience struct {
 
 var tplResearchExperience = template.Must(template.ParseFiles("section/tex/research_experience.tex"))
 
-func PrepareResearchExperienceSection(researchExperience []ResearchExperience) (string, error) {
+func PrepareResearchExperienceSection(researchExperience []ResearchExperience) (*bytes.Buffer, error) {
 	var buf bytes.Buffer
 	err := tplResearchExperience.Execute(&buf, researchExperience)
 	if err != nil {
 		println(err.Error())
-		return "", err
+		return bytes.NewBufferString(""), err
 	}
 
 	println(buf.String())
-	return buf.String(), nil
+	return &buf, nil
 }

@@ -2,7 +2,10 @@ package utils
 
 import (
 	"bytes"
+	"encoding/base64"
+	"fmt"
 	"os"
+	"time"
 )
 
 func ReadFileToBuffer(filename string) (*bytes.Buffer, error) {
@@ -28,4 +31,22 @@ func AppendBufferToFile(filename string, buffer *bytes.Buffer) error {
 	}
 
 	return nil
+}
+
+func CreateFileName() string {
+	currentTime := time.Now()
+	filename := fmt.Sprintf("file_%s", currentTime.Format("20060102_150405"))
+	return filename
+}
+
+func FileToBase64(filename string) (string, error) {
+	fileBytes, err := os.ReadFile(filename)
+	println(filename)
+	if err != nil {
+		println("Couldn't read the file")
+		return "", err
+	}
+
+	encodedString := base64.StdEncoding.EncodeToString(fileBytes)
+	return encodedString, nil
 }

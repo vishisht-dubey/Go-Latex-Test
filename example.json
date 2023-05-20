@@ -1,20 +1,158 @@
 {
+    "achievements": [
+        "Worked **under** SD Bhaiya",
+        "Worked under Soumik Bhaiya"
+    ],
     "education": [
         {
-            "start_date": "12-Jan-2022",
-            "end_date": "31-Mar-2022",
-            "institution": "Hem Sheela Model School",
-            "place": "Durgapur",
-            "course": "PCMB",
-            "degree": "AISSCE"
+            "timePeriod": {
+                "startDate": "2021-05-01",
+                "endDate": "2026-06-02",
+                "isOngoing": false
+            },
+            "institution": "IIT-BHU",
+            "location": "Varanasi",
+            "course": "Pharmaceutical Engineering",
+            "degree": "IDD (Btech+Mtech)",
+            "maximumGPA": 9.71,
+            "marksOrCGPA": 8.90,
+            "details": []
         },
         {
-            "start_date": "31-Jan-2022",
-            "end_date": "31-Apr-2022",
-            "institution": "FIITJEE",
-            "place": "Durgapur",
-            "course": "PCMB",
-            "degree": "JEE"
+            "timePeriod": {
+                "startDate": "2021-05-01",
+                "endDate": "2026-06-02",
+                "isOngoing": true
+            },
+            "institution": "IIT-BHU",
+            "location": "Varanasi",
+            "course": "Pharmaceutical Engineering",
+            "degree": "IDD (Btech+Mtech)",
+            "maximumGPA": 9.71,
+            "marksOrCGPA": 8.90,
+            "details": [
+                "class X",
+                "class XII"
+            ]
+        }
+    ],
+    "extraCurriculars": [
+        "badminton",
+        "music"
+    ],
+    "personalProjects": [
+        {
+            "projectName": "tpc-tech-team",
+            "timePeriod": {
+                "startDate": "2022-05-20",
+                "endDate": "2025-08-23",
+                "isOngoing": true
+            },
+            "links": [
+                {
+                    "linkURL": "www.google.com",
+                    "linkText": "tpc-work"
+                },
+                {
+                    "linkURL": "www.github.com",
+                    "linkText": "personal-project"
+                }
+            ],
+            "details": [
+                "Someting",
+                "must be **going**",
+                "on"
+            ]
+        }
+    ],
+    "positionsOfResponsibility": [
+        {
+            "position": "TPR",
+            "responsibilities": [
+                "hardwork",
+                "pure hardwork"
+            ],
+            "timePeriod": {
+                "startDate": "2021-12-03",
+                "endDate": "2025-05-05",
+                "isOngoing": true
+            }
+        }
+    ],
+    "contact": {
+        "email": "vishisht.rd@itbhu.ac.in",
+        "phoneNumber": "99999999",
+        "profileLinks": [
+            {
+                "icon": "",
+                "websiteName": "",
+                "link": {
+                    "linkURL": "github.com/frostik",
+                    "linkText": "frostik"
+                }
+            }
+        ]
+    },
+    "researchExperience": [
+        {
+            "projectTitle": "NA",
+            "institute": "IIT-BHU",
+            "projectAdvisor": "self",
+            "timePeriod": {
+                "startDate": "2022-04-03",
+                "endDate": "2022-07-04",
+                "isOngoing": false
+            },
+            "details": [
+                "reasech work",
+                "published paper"
+            ]
+        }
+    ],
+    "skills": [
+        {
+            "skillType": "Technical",
+            "details": "C++, Java, This & That"
+        },
+        {
+            "skillType": "Irritation",
+            "details": "Just Give Me *a* break. Please"
+        }
+    ],
+    "workExperience": [
+        {
+            "organisation": "frostik",
+            "role": "developer",
+            "location": "Varanasi",
+            "timePeriod": {
+                "startDate": "2022-12-08",
+                "endDate": "2025-12-08",
+                "isOngoing": true
+            },
+            "links": [
+                {
+                    "linkURL": "www.google.com",
+                    "linkText": "tpc-work"
+                },
+                {
+                    "linkURL": "www.github.com",
+                    "linkText": "personal-project"
+                }
+            ],
+            "details": [
+                "full stack",
+                "coding",
+                "money"
+            ]
+        }
+    ],
+    "externalProfileLinks": [
+        {
+            "websiteName": "github",
+            "link": {
+                "linkURL": "github.com/frostik",
+                "linkText": "frostik"
+            }
         }
     ]
 }
