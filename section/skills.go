@@ -1,6 +1,6 @@
 package section
 
 type Skills struct {
-	SkillType  string   `json:"skillType"`
-	SkillItems []string `json:"skillItems"`
+	SkillType  string            `json:"skillType"`
+	SkillItems []MarkdownSnippet `json:"details"`
 }
