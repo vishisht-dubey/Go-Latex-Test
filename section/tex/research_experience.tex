@@ -1,0 +1,16 @@
+%-----------RESEARCH EXPERIENCE-----------------
+{{if .}}
+\section{Research Experience}
+    \resumeSubHeadingListStart
+    {{range .}}
+        \resumeSubheading
+        { {{.ProjectTitle }} }{ {{.Institute}} }
+        { {{.ProjectAdvisor}} }{ {{.TimePeriod.StartDate.Year}}-{{if .TimePeriod.IsOngoing}} Current {{else}} {{.TimePeriod.EndDate.Year}} {{end}} }
+        \resumeItemListStart
+            {{range .Details}}
+                \resumeItem{ {{.FormattedToLatex}} }
+            {{end}}
+            \resumeItemListEnd
+    {{end}}
+\resumeSubHeadingListEnd
+{{end}}

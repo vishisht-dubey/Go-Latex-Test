@@ -7,6 +7,7 @@ import (
 
 type WorkExperience struct {
 	Organisation string            `json:"organisation"`
+	Location     string            `json:"location"`
 	Role         string            `json:"role"`
 	TimePeriod   TimePeriod        `json:"timePeriod"`
 	Links        []Link            `json:"links"`
@@ -17,10 +18,11 @@ var tplWorkExperience = template.Must(template.ParseFiles("section/tex/work_expe
 
 func PrepareWorkExperience(workexperience []WorkExperience) (string, error) {
 	var buf bytes.Buffer
-	err :=  tplWorkExperience.Execute(&buf, workexperience)
+	err := tplWorkExperience.Execute(&buf, workexperience)
 	if err != nil {
 		println(err.Error())
 		return "", err
 	}
+	println(buf.String())
 	return buf.String(), nil
 }
