@@ -8,10 +8,6 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-type Resume struct {
-	SE []section.Education `json:"education"`
-}
-
 func main() {
 	router := gin.Default()
 	router.POST("/get-latex", getLatex)
@@ -20,7 +16,7 @@ func main() {
 }
 
 func getLatex(c *gin.Context) {
-	var resume Resume
+	var resume section.Resume
 	fmt.Println("something is going on")
 
 	if err := c.BindJSON(&resume); err != nil {
@@ -29,6 +25,6 @@ func getLatex(c *gin.Context) {
 	}
 
 	// Add the new album to the slice.
-	educationSection, _ := section.PrepareEducationSection(resume.SE[0])
+	educationSection, _ := section.PrepareEducationSection(resume.Education[0])
 	c.IndentedJSON(http.StatusCreated, gin.H{"latex": educationSection})
 }
