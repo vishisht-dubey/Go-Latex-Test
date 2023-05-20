@@ -16,11 +16,11 @@ type Education struct {
 	Details      []MarkdownSnippet `json:"details"`
 }
 
-var tpl = template.Must(template.ParseFiles("section/tex/education.tex"))
+var tplEducation = template.Must(template.ParseFiles("section/tex/education.tex"))
 
 func PrepareEducationSection(education []Education) (string, error) {
 	var buf bytes.Buffer
-	err := tpl.Execute(&buf, education)
+	err := tplEducation.Execute(&buf, education)
 	if err != nil {
 		println(err.Error())
 		return "", err

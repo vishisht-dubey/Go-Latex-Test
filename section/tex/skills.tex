@@ -1,0 +1,12 @@
+%-----------PROGRAMMING SKILLS-----------
+{{if .}}
+\section{Technical Skills}
+\begin{itemize}[leftmargin=0.15in, label={}]
+    {{range .}}
+   \small{\item{
+    \textbf{ {{.SkillType}} }{: {{.SkillItems.FormattedToLatex}}} \\
+   }}
+   {{end}}
+\end{itemize}
+\vspace{-15pt}
+{{end}}

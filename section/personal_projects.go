@@ -1,6 +1,6 @@
 package section
 
-type PersonalProjects struct {
+type PersonalProject struct {
 	ProjectName string            `json:"projectName"`
 	TimePeriod  TimePeriod        `json:"timePeriod"`
 	Links       []Link            `json:"links"`
