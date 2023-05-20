@@ -1,9 +1,9 @@
 package section
 
 import (
-	"Go-Latex-Test/shellescape"
+	// "Go-Latex-Test/shellescape"
 	"encoding/json"
-	"os/exec"
+	// "os/exec"
 	"strings"
 	"time"
 )
@@ -58,17 +58,17 @@ func (d Date) MarshalJSON() ([]byte, error) {
 }
 
 func (m *MarkdownSnippet) UnmarshalJSON(b []byte) error {
-	s := shellescape.Quote(strings.Trim(string(b), "\""))
+	// s := shellescape.Quote(strings.Trim(string(b), "\""))
 
-	stdout, err := exec.Command("bash", "-c", "echo "+s+" | pandoc -f markdown -t latex").Output()
-	if err != nil {
-		println(err.Error())
-		return err
-	}
+	// stdout, err := exec.Command("bash", "-c", "echo "+s+" | pandoc -f markdown -t latex").Output()
+	// if err != nil {
+	// 	println(err.Error())
+	// 	return err
+	// }
 
 	*m = MarkdownSnippet{
-		s,
-		strings.TrimRight(string(stdout), "\r\n"),
+		string(b),
+		strings.TrimRight(string(b), "\r\n"),
 	}
 
 	return nil

@@ -25,5 +25,6 @@ func PrepareEducationSection(education []Education) (string, error) {
 		println(err.Error())
 		return "", err
 	}
+	println(buf.String())
 	return buf.String(), nil
 }
