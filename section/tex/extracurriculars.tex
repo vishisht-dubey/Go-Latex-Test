@@ -1,0 +1,8 @@
+%-----------ACTIVITIES---------------
+{{if .}}
+\section{Extra Curriculars}
+    \resumeItemListStart
+    {{range .}} \resumeItem{ {{.FormattedToLatex}} }
+    {{end}}
+    \resumeItemListEnd
+{{end}}
