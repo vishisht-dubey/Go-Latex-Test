@@ -1,0 +1,7 @@
+{{if .}}
+\begin{center}
+    {\Huge \scshape {{.Name}} } \\ \vspace{4pt}
+    \small \raisebox{-0.1\height}\faPhone\ {{.PhoneNumber}} ~ \href{ {{.Email}} }{\raisebox{-0.2\height}\faEnvelope\ \underline{ {{.Email}} }}
+    \vspace{-8pt}
+\end{center}
+{{end}}
