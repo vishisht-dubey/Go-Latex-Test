@@ -3,14 +3,13 @@
 \section{Research Experience}
     \resumeSubHeadingListStart
     {{range .}}
-        \resumeSubheading
-        { {{.ProjectTitle }} }{ {{.Institute}} }
+        \resumeSubheading{\textbf{ {{.ProjectTitle }} }}{ {{.Institute}} }
         { {{.ProjectAdvisor}} }{ {{.TimePeriod.StartDate.Year}}-{{if .TimePeriod.IsOngoing}} Current {{else}} {{.TimePeriod.EndDate.Year}} {{end}} }
         \resumeItemListStart
-            {{range .Details}}
-                \resumeItem{ {{.FormattedToLatex}} }
+            {{range .Details}} \resumeItem{ {{.FormattedToLatex}} }
             {{end}}
             \resumeItemListEnd
     {{end}}
-\resumeSubHeadingListEnd
+    \resumeSubHeadingListEnd
+\vspace{-16pt}
 {{end}}

@@ -3,14 +3,13 @@
 \section{Work Experience}
     \resumeSubHeadingListStart
     {{range .}}
-    \resumeSubheading
-        { {{.Organisation}} {{range .Links}} (\href{ {{.LinkURL}} }{\emph{\underline{ {{.LinkText}} }}}) {{end}} }{ {{.Location}} }
-        { {{.Role}} }{ {{.TimePeriod.StartDate.Year}}-{{if .TimePeriod.IsOngoing}} Current {{else}} {{.TimePeriod.EndDate.Year}} {{end}} }
+    \resumeSubheading { \textbf{ {{.Organisation}} } {{range .Links}} (\href{ {{.LinkURL}} }{\emph{\underline{ {{.LinkText}} }}}) {{end}} }{ {{.Location}} }
+    { {{.Role}} }{ {{.TimePeriod.StartDate.Year}}-{{if .TimePeriod.IsOngoing}} Current {{else}} {{.TimePeriod.EndDate.Year}} {{end}} }
             \resumeItemListStart
-            {{range .Details}}
-                \resumeItem{ {{.FormattedToLatex}}}
+            {{range .Details}} \resumeItem{ {{.FormattedToLatex}}}
             {{end}}
             \resumeItemListEnd
       {{end}}
+      \resumeSubHeadingListEnd
 \vspace{-16pt}
 {{end}}

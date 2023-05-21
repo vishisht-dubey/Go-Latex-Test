@@ -6,21 +6,14 @@
 
     {{range .}}
         \resumeSubheading
-
-        {\textbf{ {{.Institution}}, {{.Location}} }}{\textbf{ {{.TimePeriod.StartDate.Year}} - {{if .TimePeriod.IsOngoing}} Current {{else}} {{.TimePeriod.EndDate.Year}} {{end}}} }
-        { {{.Degree}} in {{.Course}}}{CGPA - {{.MarksOrCGPA}}/{{.MaximumMarks}} }
-
+        {\textbf{ {{.Institution}}, {{.Location}} }}{\textbf{ {{.TimePeriod.StartDate.Year}} - {{if .TimePeriod.IsOngoing}} Current {{else}} {{.TimePeriod.EndDate.Year}} {{end}}} }{ {{.Degree}} in {{.Course}}}{CGPA - {{.MarksOrCGPA}}/{{.MaximumMarks}} }
         {{if .Details}}
+            \vspace{-10pt}
             \resumeItemListStart
-
-            {{range .Details}}
-                \resumeItem{ {{.FormattedToLatex}}}
+            {{range .Details}} \resumeItem{ {{.FormattedToLatex}}}
             {{end}}
-
             \resumeItemListEnd
         {{end}}
-
-        \resumeSubHeadingListEnd
     {{end}}
-
+    \resumeSubHeadingListEnd
 {{end}}

@@ -30,14 +30,8 @@ func getLatex(c *gin.Context) {
 	texFile := outputDir + jobName + ".tex"
 	pdfFile := outputDir + jobName + ".pdf"
 
-	cSection, _ := section.PrepareContactSection(resume.Contact)
-	reSection, _ := section.PrepareResearchExperienceSection(resume.ResearchExperience)
-	preamble, _ := utils.ReadFileToBuffer("section/tex/preamble.text")
-	closing, _ := utils.ReadFileToBuffer("section/tex/closing.text")
-	utils.AppendBufferToFile(texFile, preamble)
-	utils.AppendBufferToFile(texFile, cSection)
-	utils.AppendBufferToFile(texFile, reSection)
-	utils.AppendBufferToFile(texFile, closing)
+	resumeBuffer, _ := resume.Prepare()
+	utils.AppendBufferToFile(texFile, resumeBuffer)
 
 	if stdout, err := exec.Command("pdflatex", "-output-directory="+"/tmp/", "-jobname="+jobName, texFile).Output(); err != nil {
 		println(err.Error())

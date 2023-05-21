@@ -1,12 +1,8 @@
 %-----------INVOLVEMENT---------------
 {{if .}}
 \section{Achievements}
-    \resumeSubHeadingListStart
-     \vspace{-5pt}
-        \resumeItemListStart
-        {{range .}}
-            \resumeItem{\textbf{ {{.FormattedToLatex}} }}
-        {{end}}
-        \resumeItemListEnd
-    \resumeSubHeadingListEnd
+    \resumeItemListStart
+    {{range .}} \resumeItem{ {{.FormattedToLatex}} }
+    {{end}}
+    \resumeItemListEnd
 {{end}}

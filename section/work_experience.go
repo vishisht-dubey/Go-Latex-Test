@@ -16,6 +16,6 @@ type WorkExperience struct {
 
 var tplWorkExperience = template.Must(template.ParseFiles("section/tex/work_experience.tex"))
 
-func PrepareWorkExperience(workexperience []WorkExperience) (*bytes.Buffer, error) {
+func PrepareWorkExperienceSection(workexperience []WorkExperience) (*bytes.Buffer, error) {
 	return PrepareSection(workexperience, tplWorkExperience)
 }
