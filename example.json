@@ -80,6 +80,7 @@
         }
     ],
     "contact": {
+        "name": "vishisht",
         "email": "vishisht.rd@itbhu.ac.in",
         "phoneNumber": "99999999",
         "profileLinks": [
@@ -144,15 +145,6 @@
                 "coding",
                 "money"
             ]
-        }
-    ],
-    "externalProfileLinks": [
-        {
-            "websiteName": "github",
-            "link": {
-                "linkURL": "github.com/frostik",
-                "linkText": "frostik"
-            }
         }
     ]
 }
