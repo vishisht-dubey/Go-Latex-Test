@@ -1,0 +1,11 @@
+{{if .}}
+\begin{center}
+    {\Huge \scshape {{.Name}} } \\ \vspace{4pt}
+    \\ \vspace{4pt}
+    \small \raisebox{-0.1\height}\faPhone\ {{.PhoneNumber}} ~ \href{ {{.Email}} }{\raisebox{-0.2\height}\faEnvelope\  \underline{ {{.PhoneNumber}} } } ~
+    {{range .ProfileLinks}} 
+    \textbf{ {{.WebsiteName}} } {\raisebox{-0.2\height}\{{.IconName}}\} \href{ {{.Link.LinkURL}} } {\underline{ {{.Link.LinkText}} } }  ~
+    {{end}}
+    \vspace{-8pt}
+\end{center}
+{{end}}
