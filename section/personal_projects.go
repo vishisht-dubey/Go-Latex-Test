@@ -14,14 +14,6 @@ type PersonalProject struct {
 
 var tplPersonalProjects = template.Must(template.ParseFiles("section/tex/personal_projects.tex"))
 
-func PreparePersonalProjectsSection(personalProjects []PersonalProject) (string, error) {
-	var buf bytes.Buffer
-	err := tplPersonalProjects.Execute(&buf, personalProjects)
-	if err != nil {
-		println(err.Error())
-		return "", err
-	}
-
-	println(buf.String())
-	return buf.String(), nil
+func PreparePersonalProjectsSection(personalProjects []PersonalProject) (*bytes.Buffer, error) {
+	return PrepareSection(personalProjects, tplPersonalProjects)
 }

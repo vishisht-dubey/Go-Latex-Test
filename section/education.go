@@ -18,12 +18,6 @@ type Education struct {
 
 var tplEducation = template.Must(template.ParseFiles("section/tex/education.tex"))
 
-func PrepareEducationSection(education []Education) (string, error) {
-	var buf bytes.Buffer
-	err := tplEducation.Execute(&buf, education)
-	if err != nil {
-		println(err.Error())
-		return "", err
-	}
-	return buf.String(), nil
+func PrepareEducationSection(education []Education) (*bytes.Buffer, error) {
+	return PrepareSection(education, tplEducation)
 }

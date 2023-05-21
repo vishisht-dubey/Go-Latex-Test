@@ -13,14 +13,6 @@ type POR struct {
 
 var tplPORs = template.Must(template.ParseFiles("section/tex/pors.tex"))
 
-func PreparePORsSection(pors []POR) (string, error) {
-	var buf bytes.Buffer
-	err := tplPORs.Execute(&buf, pors)
-	if err != nil {
-		println(err.Error())
-		return "", err
-	}
-
-	println(buf.String())
-	return buf.String(), nil
+func PreparePORsSection(pors []POR) (*bytes.Buffer, error) {
+	return PrepareSection(pors, tplPORs)
 }

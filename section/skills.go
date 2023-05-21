@@ -12,12 +12,6 @@ type Skill struct {
 
 var tplSkills = template.Must(template.ParseFiles("section/tex/skills.tex"))
 
-func PrepareSkillsSection(skills []Skill) (string, error) {
-	var buf bytes.Buffer
-	err := tplSkills.Execute(&buf, skills)
-	if err != nil {
-		println(err.Error())
-		return "", err
-	}
-	return buf.String(), nil
+func PrepareSkillsSection(skills []Skill) (*bytes.Buffer, error) {
+	return PrepareSection(skills, tplSkills)
 }

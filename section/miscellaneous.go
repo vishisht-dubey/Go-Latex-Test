@@ -2,9 +2,11 @@ package section
 
 import (
 	"Go-Latex-Test/utils"
+	"bytes"
 	"encoding/json"
 	"os/exec"
 	"strings"
+	"text/template"
 	"time"
 )
 
@@ -76,4 +78,15 @@ func (m *MarkdownSnippet) UnmarshalJSON(b []byte) error {
 
 func (m MarkdownSnippet) MarshalJSON() ([]byte, error) {
 	return json.Marshal(m.rawString)
+}
+
+func PrepareSection(i interface{}, tpl *template.Template) (*bytes.Buffer, error) {
+	var buf bytes.Buffer
+	err := tpl.Execute(&buf, i)
+	if err != nil {
+		println(err.Error())
+		return bytes.NewBufferString(""), err
+	}
+	println(buf.String())
+	return &buf, nil
 }

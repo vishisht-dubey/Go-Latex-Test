@@ -22,12 +22,5 @@ type ProfileLinks struct {
 var tplContact = template.Must(template.ParseFiles("section/tex/contact.tex"))
 
 func PrepareContactSection(contact Contact) (*bytes.Buffer, error) {
-	var buf bytes.Buffer
-	err := tplContact.Execute(&buf, contact)
-	if err != nil {
-		println(err.Error())
-		return bytes.NewBufferString(""), err
-	}
-	println(buf.String())
-	return &buf, nil
+	return PrepareSection(contact, tplContact)
 }
